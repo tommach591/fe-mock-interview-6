@@ -1,0 +1,10 @@
+.Footer {
+  display: flex;
+  border: 1px solid black;
+  font-family: cursive;
+}
+
+.Year {
+  margin-left: auto;
+  padding-right: 1rem;
+}

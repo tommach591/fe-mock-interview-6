@@ -1,0 +1,45 @@
+.Display {
+  font-family: cursive;
+}
+
+.Select {
+  display: flex;
+  border: 1px solid black;
+  padding-left: 20%;
+  padding-right: 20%;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.Option {
+  border: 1px solid black;
+  width: 7.5rem;
+  height: 2.5rem;
+  text-align: center;
+  margin: auto;
+}
+
+.Option:hover {
+  cursor: pointer;
+}
+
+.OptionText {
+  transform: translateY(-50%);
+}
+
+.Gallery {
+  border: 1px solid black;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  gap: 4rem;
+  height: 40rem;
+  text-align: center;
+  overflow-y: auto;
+  place-items: center;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.Pictures {
+  padding: 1rem;
+}
