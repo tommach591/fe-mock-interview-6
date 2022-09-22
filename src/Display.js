@@ -3,9 +3,29 @@ import { faker } from "@faker-js/faker";
 import { useState } from "react";
 
 function Display() {
-  const [type, setType] = useState("cats");
+  const [type, setType] = useState(0);
+  const listOfChoices = ["Cat", "Dog", "Bear", "Cow"];
 
-  function GetPictures({ type }) {
+  function GetSelect() {
+    const options = [];
+    for (let i = 0; i < 4; i++) {
+      options.push(
+        <div
+          className={type === i ? "Option On" : "Option Off"}
+          key={i}
+          onClick={() => {
+            setType(i);
+          }}
+        >
+          <h4 className="OptionText">{listOfChoices[i]}</h4>
+        </div>
+      );
+    }
+
+    return options;
+  }
+
+  function GeneratePictures({ type }) {
     const pictures = [];
 
     for (let i = 0; i < 25; i++) {
@@ -22,48 +42,13 @@ function Display() {
     return pictures;
   }
 
-  function ChangeType(newType) {
-    setType(newType);
-  }
-
   return (
     <div className="Display">
       <div className="Select">
-        <div
-          className="Option"
-          onClick={() => {
-            setType("cats");
-          }}
-        >
-          <h4 className="OptionText">Cat</h4>
-        </div>
-        <div
-          className="Option"
-          onClick={() => {
-            ChangeType("dogs");
-          }}
-        >
-          <h4 className="OptionText">Dog</h4>
-        </div>
-        <div
-          className="Option"
-          onClick={() => {
-            ChangeType("bears");
-          }}
-        >
-          <h4 className="OptionText">Bear</h4>
-        </div>
-        <div
-          className="Option"
-          onClick={() => {
-            ChangeType("cows");
-          }}
-        >
-          <h4 className="OptionText">Cow</h4>
-        </div>
+        <GetSelect />
       </div>
       <div className="Gallery">
-        <GetPictures type={type} />
+        <GeneratePictures type={listOfChoices[type]} />
       </div>
     </div>
   );

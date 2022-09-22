@@ -10,6 +10,10 @@
   padding: 0.3rem;
 }
 
+.Title:hover {
+  cursor: pointer;
+}
+
 .Menus {
   display: flex;
   margin-left: auto;
@@ -19,4 +23,8 @@
   padding: 0.3rem;
   margin-left: 1rem;
   margin-right: 1rem;
+}
+
+.Menu:hover {
+  cursor: pointer;
 }

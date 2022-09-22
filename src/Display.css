@@ -4,7 +4,8 @@
 
 .Select {
   display: flex;
-  border: 1px solid black;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
   padding-left: 20%;
   padding-right: 20%;
   padding-top: 1rem;
@@ -17,6 +18,14 @@
   height: 2.5rem;
   text-align: center;
   margin: auto;
+}
+
+.On {
+  background-color: cornflowerblue;
+}
+
+.Off {
+  background-color: white;
 }
 
 .Option:hover {
