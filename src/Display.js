@@ -1,12 +1,14 @@
 import "./Display.css";
-import { faker } from "@faker-js/faker";
+import Gallery from "./Gallery";
 import { useState } from "react";
 
-function Display() {
+function Display({ isMobile }) {
   const [type, setType] = useState(0);
+  const [dropDownOpen, setDropDownOpen] = useState(false);
+
   const listOfChoices = ["Cat", "Dog", "Bear", "Cow"];
 
-  function GetSelect() {
+  function GetSelectDesktop() {
     const options = [];
     for (let i = 0; i < 4; i++) {
       options.push(
@@ -25,31 +27,55 @@ function Display() {
     return options;
   }
 
-  function GeneratePictures({ type }) {
-    const pictures = [];
-
-    for (let i = 0; i < 25; i++) {
-      pictures.push(
-        <img
+  function GetOptionsForMobile() {
+    const options = [];
+    for (let i = 0; i < 4; i++) {
+      options.push(
+        <div
           key={i}
-          className="Picture"
-          src={faker.image.imageUrl(250, 250, type, true)}
-          alt="new"
-        />
+          className="Choices"
+          onClick={() => {
+            setType(i);
+            setDropDownOpen(!dropDownOpen);
+          }}
+        >
+          <div className="ChoiceText">{listOfChoices[i]}</div>
+        </div>
       );
     }
 
-    return pictures;
+    return options;
+  }
+
+  function GetSelectMobile() {
+    return (
+      <div className="DropdownOptions">
+        <div
+          className="Selected"
+          onClick={() => {
+            setDropDownOpen(!dropDownOpen);
+          }}
+        >
+          {listOfChoices[type]}
+          <div className={dropDownOpen ? "ArrowUp" : "ArrowDown"}></div>
+        </div>
+        {dropDownOpen ? (
+          <div className="ListOfChoices">
+            <GetOptionsForMobile />
+          </div>
+        ) : (
+          <div></div>
+        )}
+      </div>
+    );
   }
 
   return (
     <div className="Display">
       <div className="Select">
-        <GetSelect />
+        {isMobile ? <GetSelectDesktop /> : <GetSelectMobile />}
       </div>
-      <div className="Gallery">
-        <GeneratePictures type={listOfChoices[type]} />
-      </div>
+      <Gallery type={type} />
     </div>
   );
 }

@@ -28,3 +28,31 @@
 .Menu:hover {
   cursor: pointer;
 }
+
+.Burger {
+  width: 1.75rem;
+  position: absolute;
+  left: 340px;
+  top: 35px;
+}
+
+.Bar {
+  border: 1px solid black;
+  margin-top: 7px;
+}
+
+@media (max-width: 450px) {
+  .Menus {
+    position: absolute;
+    display: inline;
+    left: 275px;
+    top: 75px;
+  }
+
+  .Menu {
+    border: 1px solid black;
+    background-color: white;
+    width: 5rem;
+    height: 1.5rem;
+  }
+}
